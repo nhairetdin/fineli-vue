@@ -12,7 +12,7 @@
 
   a {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: lightgreen;
     text-decoration: none;
 
