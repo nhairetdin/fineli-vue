@@ -25,7 +25,7 @@ export default {
   font-size: 0.8em;
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
-  color: #f0f0f0;
+  color: #bfbfb2;
 }
 
 .container {
