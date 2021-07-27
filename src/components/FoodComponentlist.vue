@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-for="obj in componentData" :key="obj.header">
+    <div class="infoBlock" v-for="obj in componentData" :key="obj.header">
       <div class="row">
         <div class="header">{{ obj.header }}</div>
-        <div class="header">Yks.</div>
+        <!-- <div class="header">Yks.</div> -->
       </div>
 
       <div class="row" v-for="component in obj.components" :key="component">
@@ -51,7 +51,7 @@ export default {
 <style scoped>
   .row {
     display: grid;
-    grid-template-columns: 90% 10%;
+    grid-template-columns: 95% 5%;
   }
 
   .flexRow {
@@ -60,5 +60,10 @@ export default {
 
   .header {
     font-weight: bold;
+    color: lightgreen;
+  }
+
+  .infoBlock {
+    margin-bottom: 1em;
   }
 </style>

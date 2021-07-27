@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" />
+    <input type="text" placeholder="Hakusana" />
   </div>
 </template>
 

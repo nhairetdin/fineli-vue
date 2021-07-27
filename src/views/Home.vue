@@ -5,12 +5,12 @@
     <SearchInput />
 
     <div class="dataContainer">
-      <div class="foodComponentContainer">
-        <FoodComponentlist />
-      </div>
-
       <div class="foodContainer">
         <FoodList />
+      </div>
+      
+      <div class="foodComponentContainer">
+        <FoodComponentlist />
       </div>
     </div>
   </div>
@@ -37,15 +37,15 @@ export default {
 <style lang="scss">
   .dataContainer {
     display: flex;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
   .foodComponentContainer {
-    background-color: red;
     flex-grow: 1;
   }
 
   .foodContainer {
-    background-color: green;
     flex-grow: 9;
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div><h4>FoodList</h4></div>
+  <div>FoodList</div>
 </template>
 
 <script>
