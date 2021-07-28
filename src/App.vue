@@ -22,9 +22,11 @@ export default {
   // font-family: Avenir, Helvetica, Arial, sans-serif;
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
-  font-size: 0.75em;
-  font-family: 'Roboto Mono', monospace;
-  font-weight: 500;
+  font-size: 0.8em;
+  // font-family: 'Roboto Mono', monospace;
+  // font-family: 'Mukta', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
   color: #bfbfb2;
 }
 
