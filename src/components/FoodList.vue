@@ -8,7 +8,7 @@
 export default {
   computed: {
     foodDataDisplay() {
-      return this.$store.state.foodDataDisplay
+      return this.$store.state.foodData.slice(-50)
     }
   },
 }
