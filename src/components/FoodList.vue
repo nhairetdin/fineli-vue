@@ -8,7 +8,12 @@
 export default {
   computed: {
     foodDataDisplay() {
-      return this.$store.state.foodData.slice(-50)
+      const keyword = this.$store.state.filterKeyword
+        .toUpperCase()
+      
+      return this.$store.state.foodData
+        .filter(food => food.foodname.includes(keyword))
+        .slice(-50)
     }
   },
 }

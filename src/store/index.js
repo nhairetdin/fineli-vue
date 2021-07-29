@@ -5,6 +5,7 @@ export default createStore({
     componentData: [],
     referenceValues: {},
     foodData: [],
+    filterKeyword: ""
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
@@ -17,6 +18,9 @@ export default createStore({
     SET_FOOD_DATA(state, payload) {
       state.foodData = payload
     },
+    SET_FILTER_KEYWORD(state, payload) {
+      state.filterKeyword = payload
+    }
   },
   actions: {
     async fetchComponentData({ commit }) {
@@ -31,7 +35,7 @@ export default createStore({
       data = await data.json()
       console.log(data)
       commit('SET_FOOD_DATA', data)
-    }
+    },
   },
   modules: {},
 })
