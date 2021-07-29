@@ -16,6 +16,7 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchComponentData")
+    this.$store.dispatch("fetchFoodData")
   }
 };
 </script>
