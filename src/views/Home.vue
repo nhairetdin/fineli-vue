@@ -42,10 +42,22 @@ export default {
   }
 
   .foodComponentContainer {
-    flex-grow: 1;
+    flex: 3;
+    min-width: 25em;
   }
 
   .foodContainer {
-    flex-grow: 9;
+    flex: 9;
+    overflow: hidden;
+    margin-right: 1em;
+  }
+
+  .col {
+    overflow: hidden;
+    margin-right: 1em;
+  }
+
+  .col-right {
+    text-align: right;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="row in foodDataDisplay" :key="row.foodid">{{ row.foodname }}</div>
+    <div class="foodRow" v-for="row in foodDataDisplay" :key="row.foodid">{{ row.foodname }}</div>
   </div>
 </template>
 
@@ -19,6 +19,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .foodRow {
+    white-space: nowrap;
+    overflow: hidden;
+  }
 </style>
