@@ -21,15 +21,8 @@ export default {
       const keyword = this.$store.state.filterKeyword
         .toUpperCase()
 
-      return str.replaceAll(keyword, `<span style="color: #eedf90;">${keyword}</span>`)
+      return str.replaceAll(keyword, `<span class="highlight">${keyword}</span>`)
     }
   }
 }
 </script>
-
-<style scoped>
-  .foodRow {
-    white-space: nowrap;
-    overflow: hidden;
-  }
-</style>

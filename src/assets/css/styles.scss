@@ -1,0 +1,118 @@
+@import "theme-colors";
+
+#app {
+  font-size: 0.8em;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  color: var(--dynamic-text-color);
+}
+
+.container {
+  margin-left: 4em;
+  margin-right: 4em;
+}
+
+.dataContainer {
+  display: flex;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.foodComponentContainer {
+  flex: 3;
+  min-width: 25em;
+}
+
+.foodContainer {
+  flex: 9;
+  overflow: hidden;
+  margin-right: 1em;
+}
+
+.col {
+  overflow: hidden;
+  margin-right: 1em;
+}
+
+.col-right {
+  text-align: right;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 70% 20% 10%;
+  overflow: hidden;
+}
+
+.flexRow {
+  display: flex;
+}
+
+.header {
+  font-weight: bold;
+  color: var(--dynamic-title-color);
+}
+
+.infoBlock {
+  margin-bottom: 1em;
+  white-space: nowrap;
+}
+
+.foodRow {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.navContainer {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.theme-switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 1em;
+}
+
+.theme-switcher {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+
+  &.light {
+    background-color: #ffffff;
+  }
+
+  &.dark {
+    background-color: #383838;
+  }
+
+  &.green {
+    background-color: #51ffb0;
+  }
+} 
+
+#nav {
+  a {
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--dynamic-title-color);
+    text-decoration: none;
+
+    &.router-link-exact-active {
+      color: var(--dynamic-title-color);
+      text-decoration: underline;
+    }
+  }
+}
+
+.highlight {
+  color: var(--dynamic-highlight-color);
+}
+
+html {
+  background-color: var(--app-background-color);
+}

@@ -33,31 +33,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-  .dataContainer {
-    display: flex;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-
-  .foodComponentContainer {
-    flex: 3;
-    min-width: 25em;
-  }
-
-  .foodContainer {
-    flex: 9;
-    overflow: hidden;
-    margin-right: 1em;
-  }
-
-  .col {
-    overflow: hidden;
-    margin-right: 1em;
-  }
-
-  .col-right {
-    text-align: right;
-  }
-</style>

@@ -20,26 +20,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-#app {
-  // font-family: Avenir, Helvetica, Arial, sans-serif;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8em;
-  // font-family: 'Roboto Mono', monospace;
-  // font-family: 'Mukta', sans-serif;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  color: #bfbfb2;
-}
-
-.container {
-  margin-left: 4em;
-  margin-right: 4em;
-}
-
-html {
-  background-color: #383838;
-}
-</style>

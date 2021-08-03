@@ -1,0 +1,20 @@
+:root {
+  --app-background-color: #383838;
+  --dynamic-title-color: lightgreen;
+  --dynamic-text-color: #bfbfb2;
+  --dynamic-highlight-color: #eedf90;
+}
+
+[theme="light"] {
+  --app-background-color: #ffffff;
+  --dynamic-title-color: #ff1797;
+  --dynamic-text-color: rgb(84 84 84);
+  --dynamic-highlight-color: #000000;
+}
+
+[theme="green"] {
+  --app-background-color: #1e1e1e;
+  --dynamic-title-color: #51ffb0;
+  --dynamic-text-color: #42ba59;
+  --dynamic-highlight-color: #51ffb0;
+}
