@@ -9,6 +9,7 @@
       <div @click="switchtheme('dark')" class="theme-switcher dark"></div>
       <div @click="switchtheme('light')" class="theme-switcher light"></div>
       <div @click="switchtheme('green')" class="theme-switcher green"></div>
+      <div @click="switchtheme('dark2')" class="theme-switcher dark2"></div>
     </div>
   </div>
 </template>
