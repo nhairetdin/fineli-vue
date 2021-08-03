@@ -10,7 +10,7 @@ export default {
     foodDataDisplay() {
       const keyword = this.$store.state.filterKeyword
         .toUpperCase()
-      
+
       return this.$store.state.foodData
         .filter(food => food.foodname.includes(keyword))
         .slice(-50)
@@ -20,6 +20,10 @@ export default {
     highlight(str) {
       const keyword = this.$store.state.filterKeyword
         .toUpperCase()
+
+      if (keyword.length < 1) {
+        return str
+      }
 
       return str.replaceAll(keyword, `<span class="highlight">${keyword}</span>`)
     }
