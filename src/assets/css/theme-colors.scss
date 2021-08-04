@@ -3,6 +3,7 @@
   --dynamic-title-color: lightgreen;
   --dynamic-text-color: #bfbfb2;
   --dynamic-highlight-color: #eedf90;
+  --dynamic-hover-color: rgb(84 84 84);
 }
 
 [theme="light"] {
@@ -10,6 +11,7 @@
   --dynamic-title-color: #ff1797;
   --dynamic-text-color: rgb(65 63 63);
   --dynamic-highlight-color: #399f00;
+  --dynamic-hover-color: rgb(238 238 238);
 }
 
 [theme="green"] {
@@ -17,6 +19,7 @@
   --dynamic-title-color: #51ffb0;
   --dynamic-text-color: #42ba59;
   --dynamic-highlight-color: #51ffb0;
+  --dynamic-hover-color: rgb(55 55 55);
 }
 
 [theme="dark2"] {
@@ -24,4 +27,5 @@
   --dynamic-title-color: #86dc71;
   --dynamic-text-color: #a6bbbd;
   --dynamic-highlight-color: #c8dc83;
+  --dynamic-hover-color: rgb(51 51 51);
 }

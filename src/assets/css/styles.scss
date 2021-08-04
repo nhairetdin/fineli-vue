@@ -61,6 +61,10 @@
 .foodRow {
   white-space: nowrap;
   overflow: hidden;
+  
+  &:hover {
+    background-color: var(--dynamic-hover-color);
+  }
 }
 
 .navContainer {
