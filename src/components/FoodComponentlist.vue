@@ -7,8 +7,8 @@
 
       <div class="row" v-for="component in obj.data" :key="component.nimi">
         <div class="col">{{ component.nimi }}</div>
-        <div class="col col-right">1437.8</div>
-        <div class="col col-right">mg</div>
+        <div class="col col-right">{{ foodHover[component.koodi] }}</div>
+        <div class="col col-right">{{ component.yksikko.toLowerCase() }}</div>
       </div>
     </div>
   </div>
@@ -19,6 +19,9 @@ export default {
   computed: {
     componentData() {
       return this.$store.state.componentData
+    },
+    foodHover() {
+      return this.$store.state.foodHover
     }
   },
 }

@@ -5,7 +5,8 @@ export default createStore({
     componentData: [],
     referenceValues: {},
     foodData: [],
-    filterKeyword: ""
+    filterKeyword: "",
+    foodHover: {}
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
@@ -20,6 +21,9 @@ export default createStore({
     },
     SET_FILTER_KEYWORD(state, payload) {
       state.filterKeyword = payload
+    },
+    SET_FOOD_HOVER(state, payload) {
+      state.foodHover = payload
     }
   },
   actions: {
