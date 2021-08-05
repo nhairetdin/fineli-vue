@@ -58,12 +58,29 @@
   white-space: nowrap;
 }
 
+// Colors
+$bg-color: var(--app-background-color);
+$dot-color: var(--dynamic-hover-color);
+
+// Dimensions
+$dot-size: 1px;
+$dot-space: 2px;
+
 .foodRow {
   white-space: nowrap;
   overflow: hidden;
-  
+
   &:hover {
-    background-color: var(--dynamic-hover-color);
+    // background-color: var(--dynamic-hover-color);
+    background: linear-gradient(
+          90deg,
+          $bg-color ($dot-space - $dot-size),
+          transparent 0%
+        )
+        center,
+      linear-gradient($bg-color ($dot-space - $dot-size), transparent 0%) center,
+      $dot-color;
+    background-size: $dot-space $dot-space;
   }
 }
 
@@ -102,7 +119,7 @@
   &.dark2 {
     background-color: #86dc71;
   }
-} 
+}
 
 #nav {
   a {
@@ -124,4 +141,19 @@
 
 html {
   background-color: var(--app-background-color);
+}
+
+input {
+  background-color: var(--app-background-color);
+  border-color: var(--dynamic-text-color);
+  color: var(--dynamic-text-color);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-shadow: none;
+  outline: 0;
+
+    &:focus-visible {
+      border-color: var(--dynamic-title-color);
+    }
 }
