@@ -1,7 +1,7 @@
 @import "theme-colors";
 
 #app {
-  font-size: 0.8em;
+  font-size: 15px;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
   color: var(--dynamic-text-color);
@@ -124,7 +124,7 @@ $dot-space: 2px;
 #nav {
   a {
     font-weight: 800;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     color: var(--dynamic-title-color);
     text-decoration: none;
 
