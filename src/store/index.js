@@ -30,8 +30,8 @@ export default createStore({
     async fetchComponentData({ commit }) {
       let data = await fetch("https://ravintoinfo.xyz/basedata/components/")
       data = await data.json()
-
-      commit('SET_REFERENCE_VALUES', data.originalRows[1])
+      console.log(data.originalRows[1][0])
+      commit('SET_REFERENCE_VALUES', data.originalRows[1][0])
       commit('SET_INITIAL_COMPONENT_DATA', data.classifiedRows)
     },
     async fetchFoodData({ commit }) {

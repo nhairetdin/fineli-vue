@@ -31,7 +31,7 @@
 
 .col {
   overflow: hidden;
-  margin-right: 1em;
+//   margin-right: 1em;
 }
 
 .col-right {
@@ -40,7 +40,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 70% 20% 10%;
+  grid-template-columns: 58% 20% 10% 12%;
   overflow: hidden;
 }
 
@@ -95,7 +95,6 @@ $dot-space: 2px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 1em;
 }
 
 .theme-switcher {
@@ -137,6 +136,10 @@ $dot-space: 2px;
 
 .highlight {
   color: var(--dynamic-highlight-color);
+}
+
+.title {
+  color: var(--dynamic-title-color);
 }
 
 html {

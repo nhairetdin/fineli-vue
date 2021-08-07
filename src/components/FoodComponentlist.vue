@@ -8,7 +8,8 @@
       <div class="row" v-for="component in obj.data" :key="component.nimi">
         <div class="col">{{ component.nimi }}</div>
         <div class="col col-right">{{ foodHover[component.koodi] }}</div>
-        <div class="col col-right">{{ component.yksikko.toLowerCase() }}</div>
+        <div class="col">&nbsp; {{ component.yksikko.toLowerCase() }}</div>
+        <div class="col title">{{ percent(foodHover[component.koodi], component.koodi) }}</div>
       </div>
     </div>
   </div>
@@ -22,8 +23,23 @@ export default {
     },
     foodHover() {
       return this.$store.state.foodHover
-    }
+    },
   },
+  methods: {
+    percent(amount, code) {
+      let referenceValue = this.$store.state.referenceValues[code.toLowerCase()]
+      if (referenceValue === "0.00" || amount === undefined) {
+        return " "
+      }
+
+      // To Float
+      referenceValue = +referenceValue
+      amount = +amount
+
+      const percent = amount * 100 / referenceValue
+      return Math.floor(percent) + "%"
+    }
+  }
 }
     
 </script>
