@@ -6,10 +6,12 @@
       </div>
 
       <div class="row" v-for="component in obj.data" :key="component.nimi">
-        <div class="col">{{ component.nimi }}</div>
+        <div class="col">
+          {{ component.nimi }}
+          <span class="highlight">{{ percent(foodHover[component.koodi], component.koodi) }}</span>
+        </div>
         <div class="col col-right">{{ foodHover[component.koodi] }}</div>
         <div class="col">&nbsp; {{ component.yksikko.toLowerCase() }}</div>
-        <div class="col title">{{ percent(foodHover[component.koodi], component.koodi) }}</div>
       </div>
     </div>
   </div>
@@ -37,7 +39,7 @@ export default {
       amount = +amount
 
       const percent = amount * 100 / referenceValue
-      return Math.floor(percent) + "%"
+      return "(" + Math.floor(percent) + "%)"
     }
   }
 }
