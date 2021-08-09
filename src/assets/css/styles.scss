@@ -31,7 +31,7 @@
 
 .col {
   overflow: hidden;
-//   margin-right: 1em;
+  //   margin-right: 1em;
 }
 
 .col-right {
@@ -66,22 +66,32 @@ $dot-color: var(--dynamic-hover-color);
 $dot-size: 1px;
 $dot-space: 2px;
 
+// Create dotted background image
+$background-dotted: linear-gradient(
+      90deg,
+      $bg-color ($dot-space - $dot-size),
+      transparent 0%
+    )
+    center,
+  linear-gradient($bg-color ($dot-space - $dot-size), transparent 0%) center,
+  $dot-color;
+
+$background-size: $dot-space $dot-space;
+
 .foodRow {
   white-space: nowrap;
   overflow: hidden;
 
   &:hover {
     // background-color: var(--dynamic-hover-color);
-    background: linear-gradient(
-          90deg,
-          $bg-color ($dot-space - $dot-size),
-          transparent 0%
-        )
-        center,
-      linear-gradient($bg-color ($dot-space - $dot-size), transparent 0%) center,
-      $dot-color;
-    background-size: $dot-space $dot-space;
+    background: $background-dotted;
+    background-size: $background-size;
   }
+}
+
+.refchart {
+  background: $background-dotted;
+  background-size: $background-size;
 }
 
 .navContainer {
@@ -101,7 +111,8 @@ $dot-space: 2px;
   display: inline-block;
   height: 1em;
   width: 1em;
-  border: dashed 1px black;
+  margin: 1px;
+  // border: dashed 1px black;
 
   &.light {
     background-color: #ffffff;
@@ -156,7 +167,7 @@ input {
   box-shadow: none;
   outline: 0;
 
-    &:focus-visible {
-      border-color: var(--dynamic-title-color);
-    }
+  &:focus-visible {
+    border-color: var(--dynamic-title-color);
+  }
 }
