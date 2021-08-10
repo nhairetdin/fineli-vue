@@ -7,7 +7,13 @@
 
       <div class="row" v-for="component in obj.data" :key="component.nimi">
           <div class="col">
-            <div class="refchart" :style="{ width: percent(foodHover[component.koodi], component.koodi) || '0%' }">
+            <div 
+              class="refchart" 
+              :style="{ 
+                width: percent(foodHover[component.koodi], component.koodi) || '0%' 
+              }"
+              @click="sort(component.koodi)"
+            >
               {{ component.nimi }}
               <span class="highlight">{{ percent(foodHover[component.koodi], component.koodi) || "" }}</span>
             </div>
@@ -42,6 +48,15 @@ export default {
 
       const percent = amount * 100 / referenceValue
       return Math.floor(percent) + "%"
+    },
+    sort(code) {
+      this.sortingOrder = !this.sortingOrder
+      this.$store.commit('SORT_FOOD_DATA', { code: code, order: this.sortingOrder })
+    }
+  },
+  data() {
+    return {
+      sortingOrder: false
     }
   }
 }

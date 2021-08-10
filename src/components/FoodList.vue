@@ -18,7 +18,7 @@ export default {
 
       return this.$store.state.foodData
         .filter((food) => food.foodname.includes(keyword))
-        .slice(-50)
+        .slice(0, 50)
     },
   },
   methods: {
