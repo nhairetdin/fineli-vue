@@ -2,24 +2,29 @@
   <div>
     <div class="infoBlock" v-for="obj in componentData" :key="obj.data[0]">
       <div class="row">
+        <div></div>
         <div class="header">{{ obj.data[0].ylempiluokka }}</div>
       </div>
 
-      <div class="row" v-for="component in obj.data" :key="component.nimi">
-          <div class="col">
-            <div 
-              class="refchart" 
-              :style="{ 
-                width: percent(foodHover[component.koodi], component.koodi) || '0%' 
-              }"
-              @click="sort(component.koodi)"
-            >
-              {{ component.nimi }}
-              <span class="highlight">{{ percent(foodHover[component.koodi], component.koodi) || "" }}</span>
-            </div>
+      <div class="row" v-for="cmp in obj.data" :key="cmp.nimi">
+        <div v-if="sortCode === cmp.koodi && sortOrder" class="highlight">&#8681;</div>
+        <div v-else-if="sortCode === cmp.koodi && !sortOrder" class="highlight">&#8679;</div>
+        <div v-else></div>
+
+        <div class="col">
+          <div
+            class="refchart"
+            :style="{ width: percent(foodHover[cmp.koodi], cmp.koodi) || '0%',}"
+            @click="sort(cmp.koodi)"
+          >
+            {{ cmp.nimi }}
+            <span class="highlight">{{
+              percent(foodHover[cmp.koodi], cmp.koodi) || ""
+            }}</span>
           </div>
-          <div class="col col-right">{{ foodHover[component.koodi] }}</div>
-          <div class="col">&nbsp; {{ component.yksikko.toLowerCase() }}</div>
+        </div>
+        <div class="col col-right">{{ foodHover[cmp.koodi] }}</div>
+        <div class="col">&nbsp; {{ cmp.yksikko.toLowerCase() }}</div>
       </div>
     </div>
   </div>
@@ -46,19 +51,23 @@ export default {
       referenceValue = +referenceValue
       amount = +amount
 
-      const percent = amount * 100 / referenceValue
+      const percent = (amount * 100) / referenceValue
       return Math.floor(percent) + "%"
     },
     sort(code) {
-      this.sortingOrder = !this.sortingOrder
-      this.$store.commit('SORT_FOOD_DATA', { code: code, order: this.sortingOrder })
-    }
+      this.sortOrder = !this.sortOrder
+      this.sortCode = code
+      this.$store.commit("SORT_FOOD_DATA", {
+        code: code,
+        order: this.sortOrder,
+      })
+    },
   },
   data() {
     return {
-      sortingOrder: false
+      sortOrder: false,
+      sortCode: false
     }
-  }
+  },
 }
-    
 </script>
