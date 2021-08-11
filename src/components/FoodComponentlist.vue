@@ -6,16 +6,24 @@
         <div class="header">{{ obj.data[0].ylempiluokka }}</div>
       </div>
 
-      <div class="row" v-for="cmp in obj.data" :key="cmp.nimi">
+      <div 
+        class="row" 
+        v-for="cmp in obj.data" 
+        :key="cmp.nimi" @click="sort(cmp.koodi)" 
+        @mouseover="hoverCode = cmp.koodi"
+      >
+        <!-- Refactor this later -->
         <div v-if="sortCode === cmp.koodi && sortOrder" class="highlight">&#8681;</div>
         <div v-else-if="sortCode === cmp.koodi && !sortOrder" class="highlight">&#8679;</div>
+        <div v-else-if="hoverCode === cmp.koodi && sortOrder">&#8681;</div>
+        <div v-else-if="hoverCode === cmp.koodi && !sortOrder">&#8679;</div>
         <div v-else></div>
-
+        <!-- Refactor this later -->
+        
         <div class="col">
           <div
             class="refchart"
             :style="{ width: percent(foodHover[cmp.koodi], cmp.koodi) || '0%',}"
-            @click="sort(cmp.koodi)"
           >
             {{ cmp.nimi }}
             <span class="highlight">{{
@@ -55,7 +63,10 @@ export default {
       return Math.floor(percent) + "%"
     },
     sort(code) {
-      this.sortOrder = !this.sortOrder
+      // Change order only when clicking same cmp again
+      if (code === this.sortCode) {
+        this.sortOrder = !this.sortOrder
+      }
       this.sortCode = code
       this.$store.commit("SORT_FOOD_DATA", {
         code: code,
@@ -66,7 +77,8 @@ export default {
   data() {
     return {
       sortOrder: false,
-      sortCode: false
+      sortCode: false,
+      hoverCode: false,
     }
   },
 }
