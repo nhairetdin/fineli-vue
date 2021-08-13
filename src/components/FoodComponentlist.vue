@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="infoBlock" v-for="obj in componentData" :key="obj.data[0]">
+    <div class="info-block" v-for="obj in componentData" :key="obj.data[0]">
       <div class="row">
         <div></div>
         <div class="header">{{ obj.data[0].ylempiluokka }}</div>
@@ -19,7 +19,7 @@
         <div v-else-if="hoverCode === cmp.koodi && !sortOrder">&#8679;</div>
         <div v-else></div>
         <!-- Refactor this later -->
-        
+
         <div class="col">
           <div
             class="refchart"

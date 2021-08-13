@@ -3,7 +3,7 @@
     <div class="selected-food-container" v-show="selected.length > 0">
       <div
         @mouseover="mouseover(row)"
-        class="foodRow"
+        class="food-row"
         v-for="row in selected"
         :key="row.foodid+2"
       >
@@ -14,7 +14,7 @@
     <div
       @click="addSelected(row)"
       @mouseover="mouseover(row)"
-      class="foodRow"
+      class="food-row"
       v-for="row in foodDataDisplay"
       :key="row.foodid"
     >

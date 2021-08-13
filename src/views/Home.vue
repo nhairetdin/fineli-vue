@@ -2,12 +2,12 @@
   <div class="home">
     <SearchInput />
 
-    <div class="dataContainer">
-      <div class="foodContainer">
+    <div class="data-container">
+      <div class="food-container">
         <FoodList />
       </div>
       
-      <div class="foodComponentContainer">
+      <div class="food-component-container">
         <FoodComponentlist />
       </div>
     </div>
