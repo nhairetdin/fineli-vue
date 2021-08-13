@@ -7,6 +7,7 @@ export default createStore({
     foodData: [],
     filterKeyword: "",
     foodHover: {},
+    foodSelected: []
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
@@ -32,6 +33,9 @@ export default createStore({
           : a[payload.code] - b[payload.code]
       })
     },
+    ADD_FOOD_SELECTED(state, payload) {
+      state.foodSelected = [...state.foodSelected, payload]
+    }
   },
   actions: {
     async fetchComponentData({ commit }) {

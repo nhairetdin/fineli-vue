@@ -1,12 +1,25 @@
 <template>
   <div>
+    <div class="selected-food-container" v-show="selected.length > 0">
+      <div
+        @mouseover="mouseover(row)"
+        class="foodRow"
+        v-for="row in selected"
+        :key="row.foodid+2"
+      >
+        <div v-html="highlight(row.foodname)"></div>
+      </div>
+    </div>
+
     <div
+      @click="addSelected(row)"
       @mouseover="mouseover(row)"
       class="foodRow"
       v-for="row in foodDataDisplay"
       :key="row.foodid"
-      v-html="highlight(row.foodname)"
-    ></div>
+    >
+      <div v-html="highlight(row.foodname)"></div>
+    </div>
   </div>
 </template>
 
@@ -20,6 +33,9 @@ export default {
         .filter((food) => food.foodname.includes(keyword))
         .slice(0, 50)
     },
+    selected() {
+      return this.$store.state.foodSelected
+    }
   },
   methods: {
     highlight(str) {
@@ -37,6 +53,9 @@ export default {
     mouseover(food) {
       this.$store.commit('SET_FOOD_HOVER', food)
     },
+    addSelected(food) {
+      this.$store.commit('ADD_FOOD_SELECTED', food)
+    }
   },
 }
 </script>

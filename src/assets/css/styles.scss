@@ -58,6 +58,10 @@
   white-space: nowrap;
 }
 
+.selected-food-container {
+  border-bottom: solid 1px var(--dynamic-highlight-color);
+}
+
 // Colors
 $bg-color: var(--app-background-color);
 $dot-color: var(--dynamic-hover-color);
