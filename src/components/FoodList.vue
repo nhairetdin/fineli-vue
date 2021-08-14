@@ -3,6 +3,7 @@
     <div class="selected-food-container" v-show="selected.length > 0">
       <div
         @mouseover="mouseover(row)"
+        @click="removeSelected(row.foodid)"
         class="food-row"
         v-for="row in selected"
         :key="row.foodid+2"
@@ -55,6 +56,9 @@ export default {
     },
     addSelected(food) {
       this.$store.commit('ADD_FOOD_SELECTED', food)
+    },
+    removeSelected(id) {
+      this.$store.commit('REMOVE_FOOD_SELECTED', id)
     }
   },
 }

@@ -35,7 +35,10 @@ export default createStore({
     },
     ADD_FOOD_SELECTED(state, payload) {
       state.foodSelected = [...state.foodSelected, payload]
-    }
+    },
+    REMOVE_FOOD_SELECTED(state, payload) {
+      state.foodSelected = state.foodSelected.filter(food => food.foodid !== payload)
+    },
   },
   actions: {
     async fetchComponentData({ commit }) {
