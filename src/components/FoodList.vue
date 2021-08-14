@@ -1,15 +1,17 @@
 <template>
   <div>
     <div class="selected-food-container" v-show="selected.length > 0">
-      <div
-        @mouseover="mouseover(row)"
-        @click="removeSelected(row.foodid)"
-        class="food-row"
-        v-for="row in selected"
-        :key="row.foodid+2"
-      >
-        <div v-html="highlight(row.foodname)"></div>
-      </div>
+      <transition-group name="list" tag="div">
+        <div
+          @mouseover="mouseover(row)"
+          @click="removeSelected(row.foodid)"
+          class="food-row"
+          v-for="row in selected"
+          :key="row.foodid+2"
+        >
+          <div v-html="highlight(row.foodname)"></div>
+        </div>
+      </transition-group>
     </div>
 
     <div
