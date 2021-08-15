@@ -157,6 +157,10 @@ $background-size: $dot-space $dot-space;
   color: var(--dynamic-title-color);
 }
 
+.position-relative {
+  position: relative;
+}
+
 html {
   background-color: var(--app-background-color);
 }
@@ -177,12 +181,21 @@ input {
 }
 
 // Animate
-.list-enter-active,
-.list-leave-active {
+.list-enter-active {
   transition: all 0.25s ease;
 }
-.list-enter-from,
+
+.list-leave-active {
+  transition: all 0.25s ease;
+  position: absolute;
+}
+
+.list-enter-from {
+  opacity: 0;
+  transform: translateY(6em);
+}
+
 .list-leave-to {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(4em);
 }

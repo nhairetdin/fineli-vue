@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="selected-food-container" v-show="selected.length > 0">
-      <transition-group name="list" tag="div">
+      <transition-group name="list" tag="div" class="position-relative">
         <div
           @mouseover="mouseover(row)"
           @click="removeSelected(row.foodid)"
