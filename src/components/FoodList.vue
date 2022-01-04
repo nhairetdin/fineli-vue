@@ -1,15 +1,29 @@
 <template>
   <div>
     <div class="selected-food-container" v-show="selected.length > 0">
+      <div class="food-row header">Uusi ateria, yhteensä:</div>
+
       <transition-group name="list" tag="div" class="position-relative">
         <div
           @mouseover="mouseover(row)"
-          @click="removeSelected(row.foodid)"
           class="food-row"
           v-for="row in selected"
-          :key="row.foodid+2"
+          :key="row.foodid + 2"
         >
-          <div v-html="highlight(row.foodname)"></div>
+          <div
+            v-html="highlight(row.foodname)"
+            @click="removeSelected(row.foodid)"
+          ></div>
+
+          <div 
+            class="highlight col-right" 
+            contenteditable 
+            @blur="event => updateAmount(event, row.foodid)"
+            @keydown.enter="event => updateAmount(event, row.foodid)"
+            v-text="getAmount(row.foodid)">
+          </div>
+
+          <div class="highlight col-right">g</div>
         </div>
       </transition-group>
     </div>
@@ -38,6 +52,19 @@ export default {
     },
     selected() {
       return this.$store.state.foodSelected
+    },
+    getAmount() {
+      return foodid => {
+        let amount
+
+        this.$store.state.foodSelected.forEach(food => {
+          if (food.foodid === foodid) {
+            amount = food.amount
+          }
+        })
+
+        return amount
+      }
     }
   },
   methods: {
@@ -54,13 +81,25 @@ export default {
       )
     },
     mouseover(food) {
-      this.$store.commit('SET_FOOD_HOVER', food)
+      this.$store.commit("SET_FOOD_HOVER", food)
     },
     addSelected(food) {
-      this.$store.commit('ADD_FOOD_SELECTED', food)
+      this.$store.commit("ADD_FOOD_SELECTED", { ...food, amount: 100 })
     },
     removeSelected(id) {
-      this.$store.commit('REMOVE_FOOD_SELECTED', id)
+      this.$store.commit("REMOVE_FOOD_SELECTED", id)
+    },
+    updateAmount(event, foodid) {
+      let amount = +event.target.innerText
+
+      if (isNaN(amount)) {
+        console.log("Its Nanaana")
+        amount = 100
+        event.target.innerText = 100
+      }
+
+      this.$store.commit("SET_SELECTED_FOOD_AMOUNT", { foodid: foodid, amount: amount })
+      event.target.blur()
     }
   },
 }

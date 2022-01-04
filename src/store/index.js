@@ -7,7 +7,7 @@ export default createStore({
     foodData: [],
     filterKeyword: "",
     foodHover: {},
-    foodSelected: []
+    foodSelected: [],
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
@@ -34,10 +34,21 @@ export default createStore({
       })
     },
     ADD_FOOD_SELECTED(state, payload) {
+      console.log(payload)
       state.foodSelected = [...state.foodSelected, payload]
     },
     REMOVE_FOOD_SELECTED(state, payload) {
-      state.foodSelected = state.foodSelected.filter(food => food.foodid !== payload)
+      state.foodSelected = state.foodSelected.filter(
+        (food) => food.foodid !== payload
+      )
+    },
+    SET_SELECTED_FOOD_AMOUNT(state, payload) {
+      state.foodSelected = state.foodSelected.map((food) => {
+        if (food.foodid === payload.foodid) {
+          return { ...food, amount: payload.amount }
+        }
+        return food
+      })
     },
   },
   actions: {
