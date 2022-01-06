@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="selected-food-container" v-show="selected.length > 0">
-      <div class="food-row header">Uusi ateria, yhteensä:</div>
+      <div class="food-row header" @mouseover="mouseover(selected)">Uusi ateria, yhteensä:</div>
 
       <transition-group name="list" tag="div" class="position-relative">
         <div

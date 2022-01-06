@@ -6,7 +6,7 @@ export default createStore({
     referenceValues: {},
     foodData: [],
     filterKeyword: "",
-    foodHover: {},
+    foodHover: [],
     foodSelected: [],
   },
   mutations: {
@@ -24,7 +24,7 @@ export default createStore({
       state.filterKeyword = payload
     },
     SET_FOOD_HOVER(state, payload) {
-      state.foodHover = payload
+      state.foodHover = Array.isArray(payload) ? payload : [payload]
     },
     SORT_FOOD_DATA(state, payload) {
       state.foodData = state.foodData.sort((a, b) => {
