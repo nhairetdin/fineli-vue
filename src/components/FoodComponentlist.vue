@@ -85,25 +85,17 @@ export default {
       })
     },
     sumFoodCmpAmount(foodHover, componentCode) {
-      if (foodHover.length > 0) {
-        let sum = 0
-
-        for (let i = 0; i < foodHover.length; i++) {
-          // console.log(foodHover[i][componentCode])
-          let amountOfFood = foodHover[i].amount
-
-          if (amountOfFood === undefined) {
-            amountOfFood = 100
-          }
-          // console.log("amountOfFood:", amountOfFood)
-          let amountOfComponent =
-            (amountOfFood / 100) * +foodHover[i][componentCode]
-          sum += amountOfComponent
-          // console.log("amountOfComponent:", amountOfComponent)
-        }
-
-        return this.roundToTwo(sum)
+      if (!foodHover.length > 0) {
+        return null
       }
+
+      const sum = foodHover.reduce((prev, curr) => {
+        const amountOfFood = curr.amount || 100
+        const amountOfComponent = (amountOfFood / 100) * +curr[componentCode]
+        return prev + amountOfComponent
+      }, 0)
+
+      return sum
     },
     roundToTwo(num) {
       return +(Math.round(num + 'e+2') + 'e-2')
