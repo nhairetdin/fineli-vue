@@ -7,16 +7,16 @@
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/Navbar.vue";
+import Navbar from '@/components/Navbar.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Navbar,
   },
   created() {
-    this.$store.dispatch("fetchComponentData")
-    this.$store.dispatch("fetchFoodData")
-  }
-};
+    this.$store.dispatch('fetchComponentData')
+    this.$store.dispatch('fetchFoodData')
+  },
+}
 </script>

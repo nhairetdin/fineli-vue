@@ -1,17 +1,17 @@
-import { createStore } from "vuex"
+import { createStore } from 'vuex'
 
 export default createStore({
   state: {
     componentData: [],
     referenceValues: {},
     foodData: [],
-    filterKeyword: "",
+    filterKeyword: '',
     foodHover: [],
     foodSelected: [],
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
-      console.log("FetchCompoonentData from backend", payload)
+      console.log('FetchCompoonentData from backend', payload)
       state.componentData = payload
     },
     SET_REFERENCE_VALUES(state, payload) {
@@ -39,7 +39,7 @@ export default createStore({
     },
     REMOVE_FOOD_SELECTED(state, payload) {
       state.foodSelected = state.foodSelected.filter(
-        (food) => food.foodid !== payload
+        (food) => food.foodid !== payload,
       )
     },
     SET_SELECTED_FOOD_AMOUNT(state, payload) {
@@ -53,17 +53,17 @@ export default createStore({
   },
   actions: {
     async fetchComponentData({ commit }) {
-      let data = await fetch("https://ravintoinfo.xyz/basedata/components/")
+      let data = await fetch('https://ravintoinfo.xyz/basedata/components/')
       data = await data.json()
       console.log(data.originalRows[1][0])
-      commit("SET_REFERENCE_VALUES", data.originalRows[1][0])
-      commit("SET_INITIAL_COMPONENT_DATA", data.classifiedRows)
+      commit('SET_REFERENCE_VALUES', data.originalRows[1][0])
+      commit('SET_INITIAL_COMPONENT_DATA', data.classifiedRows)
     },
     async fetchFoodData({ commit }) {
-      let data = await fetch("https://ravintoinfo.xyz/basedata/food/")
+      let data = await fetch('https://ravintoinfo.xyz/basedata/food/')
       data = await data.json()
       console.log(data)
-      commit("SET_FOOD_DATA", data)
+      commit('SET_FOOD_DATA', data)
     },
   },
   modules: {},

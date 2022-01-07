@@ -13,8 +13,8 @@ export default {
       },
       set(value) {
         this.$store.commit('SET_FILTER_KEYWORD', value)
-      }
-    }
+      },
+    },
   },
 }
 </script>

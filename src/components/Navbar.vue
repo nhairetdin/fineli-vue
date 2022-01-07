@@ -18,9 +18,9 @@
 export default {
   methods: {
     switchtheme(themename) {
-      let htmlElement = document.documentElement;
-      htmlElement.setAttribute('theme', themename);
-    }
-  }
-};
+      let htmlElement = document.documentElement
+      htmlElement.setAttribute('theme', themename)
+    },
+  },
+}
 </script>

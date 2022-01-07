@@ -36,7 +36,7 @@
           >
             {{ cmp.nimi }}
             <span class="highlight">{{
-              percent(sumFoodCmpAmount(foodHover, cmp.koodi), cmp.koodi) || ""
+              percent(sumFoodCmpAmount(foodHover, cmp.koodi), cmp.koodi) || ''
             }}</span>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default {
   methods: {
     percent(amount, code) {
       let referenceValue = this.$store.state.referenceValues[code.toLowerCase()]
-      if (referenceValue === "0.00" || amount === undefined) {
+      if (referenceValue === '0.00' || amount === undefined) {
         return null
       }
 
@@ -71,7 +71,7 @@ export default {
       amount = +amount
 
       const percent = (amount * 100) / referenceValue
-      return Math.floor(percent) + "%"
+      return Math.floor(percent) + '%'
     },
     sort(code) {
       // Change order only when clicking same cmp again
@@ -79,7 +79,7 @@ export default {
         this.sortOrder = !this.sortOrder
       }
       this.sortCode = code
-      this.$store.commit("SORT_FOOD_DATA", {
+      this.$store.commit('SORT_FOOD_DATA', {
         code: code,
         order: this.sortOrder,
       })
@@ -106,7 +106,7 @@ export default {
       }
     },
     roundToTwo(num) {
-      return +(Math.round(num + "e+2") + "e-2")
+      return +(Math.round(num + 'e+2') + 'e-2')
     },
   },
   data() {
