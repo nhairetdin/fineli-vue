@@ -137,6 +137,38 @@ $background-size: $dot-space $dot-space;
   }
 }
 
+.button-sidebar {
+  font-size: 1rem;
+  position: absolute;
+  cursor: default;
+  left: 1.5rem;
+  top: 0.6rem;
+  color: var(--dynamic-title-color);
+
+  &:hover {
+    color: var(--dynamic-text-color);
+  }
+}
+
+.sidebar {
+  width: 400px;
+  height: 100%;
+  top: 0;
+  left: -400px;
+  overflow:hidden;
+  background-color: var(--app-background-color);
+  position: absolute;
+  z-index: 11;
+  opacity: 0;
+  transition: all 0.25s;
+  -webkit-transition: all 0.25s;
+
+  &.enter {
+    opacity: 1;
+    left: 0;
+  }
+}
+
 #nav {
   a {
     font-weight: 800;

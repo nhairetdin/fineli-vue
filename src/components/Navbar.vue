@@ -1,5 +1,6 @@
 <template>
   <div class="navContainer">
+    <span class="button-sidebar" @click="openSidebar()">&#9776;</span>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
@@ -21,6 +22,9 @@ export default {
       let htmlElement = document.documentElement
       htmlElement.setAttribute('theme', themename)
     },
+    openSidebar() {
+      this.$store.commit('TOGGLE_SIDEBAR')
+    }
   },
 }
 </script>

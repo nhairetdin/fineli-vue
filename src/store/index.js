@@ -8,6 +8,7 @@ export default createStore({
     filterKeyword: '',
     foodHover: [],
     foodSelected: [],
+    sidebarVisible: false,
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
@@ -49,6 +50,9 @@ export default createStore({
         }
         return food
       })
+    },
+    TOGGLE_SIDEBAR(state) {
+      state.sidebarVisible = !state.sidebarVisible
     },
   },
   actions: {
