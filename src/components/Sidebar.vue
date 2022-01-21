@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar" v-bind:class="{ enter: visible }">
+  <div class="sidebar" :class="{ enter: visible }">
     <h1>Sidebar</h1>
     <button @click="closeSidebar()">Close</button>
   </div>

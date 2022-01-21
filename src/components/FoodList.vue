@@ -6,17 +6,12 @@
       </div>
 
       <transition-group name="list" tag="div" class="position-relative">
-        <div
-          @mouseover="mouseover(row)"
-          class="food-row"
+        <food-row
           v-for="row in selected"
-          :key="row.foodid + 2"
+          :key="row.foodid"
+          :row="row"
+          clickAction="remove"
         >
-          <div
-            v-html="highlight(row.foodname)"
-            @click="removeSelected(row.foodid)"
-          ></div>
-
           <div
             class="highlight col-right"
             contenteditable
@@ -26,23 +21,23 @@
           ></div>
 
           <div class="highlight col-right">g</div>
-        </div>
+        </food-row>
       </transition-group>
     </div>
 
-    <div
-      @click="addSelected(row)"
-      @mouseover="mouseover(row)"
-      class="food-row"
+    <food-row
       v-for="row in foodDataDisplay"
       :key="row.foodid"
+      :row="row"
+      clickAction="add"
     >
-      <div v-html="highlight(row.foodname)"></div>
-    </div>
+    </food-row>
   </div>
 </template>
 
 <script>
+import FoodRow from '@/components/FoodRow.vue'
+
 export default {
   computed: {
     foodDataDisplay() {
@@ -57,45 +52,18 @@ export default {
     },
     getAmount() {
       return (foodid) => {
-        let amount
-
-        this.$store.state.foodSelected.forEach((food) => {
-          if (food.foodid === foodid) {
-            amount = food.amount
-          }
-        })
-
-        return amount
+        const found = this.$store.state.foodSelected.find(
+          (food) => food.foodid === foodid,
+        )
+        return found.amount
       }
     },
   },
   methods: {
-    highlight(str) {
-      const keyword = this.$store.state.filterKeyword.toUpperCase()
-
-      if (keyword.length < 1) {
-        return str
-      }
-
-      return str.replaceAll(
-        keyword,
-        `<span class="highlight">${keyword}</span>`,
-      )
-    },
-    mouseover(food) {
-      this.$store.commit('SET_FOOD_HOVER', food)
-    },
-    addSelected(food) {
-      this.$store.commit('ADD_FOOD_SELECTED', { ...food, amount: 100 })
-    },
-    removeSelected(id) {
-      this.$store.commit('REMOVE_FOOD_SELECTED', id)
-    },
     updateAmount(event, foodid) {
       let amount = +event.target.innerText
 
       if (isNaN(amount)) {
-        console.log('Its Nanaana')
         amount = 100
         event.target.innerText = 100
       }
@@ -106,6 +74,12 @@ export default {
       })
       event.target.blur()
     },
+    mouseover(food) {
+      this.$store.commit('SET_FOOD_HOVER', food)
+    },
+  },
+  components: {
+    FoodRow,
   },
 }
 </script>
