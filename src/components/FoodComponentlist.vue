@@ -53,7 +53,15 @@
 export default {
   computed: {
     componentData() {
-      return this.$store.state.componentData
+      // Display ENERC unit as 'kcal'
+      return this.$store.state.componentData.map((group) => {
+        return {
+          ...group,
+          data: group.data.map((cmp) => {
+            return cmp.koodi === 'ENERC' ? { ...cmp, yksikko: 'kcal' } : cmp
+          }),
+        }
+      })
     },
     foodHover() {
       return this.$store.state.foodHover
@@ -95,7 +103,10 @@ export default {
         return prev + amountOfComponent
       }, 0)
 
-      return Math.round(sum)
+      // kj to kcal
+      return componentCode !== 'ENERC'
+        ? Math.round(sum)
+        : Math.round(sum * 0.2390057)
     },
   },
   data() {
