@@ -95,10 +95,7 @@ export default {
         return prev + amountOfComponent
       }, 0)
 
-      return sum
-    },
-    roundToTwo(num) {
-      return +(Math.round(num + 'e+2') + 'e-2')
+      return Math.round(sum)
     },
   },
   data() {
