@@ -1,5 +1,5 @@
 <template>
-  <div class="navContainer">
+  <div class="nav-container">
     <span class="button-sidebar" @click="openSidebar()">&#9776;</span>
     <div id="nav">
       <router-link to="/">Home</router-link> |

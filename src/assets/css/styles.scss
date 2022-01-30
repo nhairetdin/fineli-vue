@@ -103,8 +103,7 @@ $background-size: $dot-space $dot-space;
 .nav-container {
   display: grid;
   grid-template-columns: 80% 20%;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 1rem;
 }
 
 .theme-switch-container {
