@@ -6,6 +6,8 @@
       <router-link to="/about">About</router-link>
     </div>
 
+    <FormLogin />
+
     <div class="theme-switch-container">
       <div @click="switchtheme('dark')" class="theme-switcher dark"></div>
       <div @click="switchtheme('light')" class="theme-switcher light"></div>
@@ -16,6 +18,8 @@
 </template>
 
 <script>
+import FormLogin from '@/components/FormLogin'
+
 export default {
   methods: {
     switchtheme(themename) {
@@ -26,5 +30,8 @@ export default {
       this.$store.commit('TOGGLE_SIDEBAR')
     }
   },
+  components: {
+    FormLogin
+  }
 }
 </script>

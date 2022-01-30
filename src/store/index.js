@@ -9,6 +9,7 @@ export default createStore({
     foodHover: [],
     foodSelected: [],
     sidebarVisible: false,
+    loggedIn: false,
   },
   mutations: {
     SET_INITIAL_COMPONENT_DATA(state, payload) {
