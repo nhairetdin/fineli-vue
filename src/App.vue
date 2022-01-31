@@ -20,6 +20,10 @@ export default {
   created() {
     this.$store.dispatch('fetchComponentData')
     this.$store.dispatch('fetchFoodData')
+    
+    if (window.localStorage.getItem('user')) {
+      this.$store.commit('TOGGLE_LOGIN')
+    }
   },
 }
 </script>

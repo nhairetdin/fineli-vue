@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import req from '../tools/requests'
 
 export default createStore({
   state: {
@@ -55,6 +56,9 @@ export default createStore({
     TOGGLE_SIDEBAR(state) {
       state.sidebarVisible = !state.sidebarVisible
     },
+    TOGGLE_LOGIN(state) {
+      state.loggedIn = !state.loggedIn
+    },
   },
   actions: {
     async fetchComponentData({ commit }) {
@@ -69,6 +73,27 @@ export default createStore({
       data = await data.json()
       console.log(data)
       commit('SET_FOOD_DATA', data)
+    },
+    async login({ commit }, user) {
+      try {
+        const request = req.login(user)
+        const response = await fetch(request.url, { ...request.config })
+        const data = await response.json()
+
+        if (!response.ok) {
+          console.log('Failed', data)
+        } else {
+          console.log('Logged in', data)
+          window.localStorage.setItem('user', JSON.stringify(data))
+          commit('TOGGLE_LOGIN')
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    logout({ commit }) {
+      window.localStorage.removeItem('user')
+      commit('TOGGLE_LOGIN')
     },
   },
   modules: {},

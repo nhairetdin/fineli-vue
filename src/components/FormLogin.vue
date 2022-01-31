@@ -6,21 +6,33 @@
   </form>
 
   <div v-else class="form-inline">
-    <span class="logoutButton title">Kirjaudu ulos</span>
+    <span class="logoutButton title" @click="logout">Kirjaudu ulos</span>
   </div>
 </template>
 
 <script>
 export default {
+  computed: {
+    loggedIn() {
+      return this.$store.state.loggedIn
+    },
+  },
   data() {
     return {
-      loggedIn: this.$store.state.loggedIn,
       email: '',
       password: '',
     }
   },
   methods: {
-    submit() {},
+    submit() {
+      this.$store.dispatch('login', {
+        email: this.email,
+        password: this.password,
+      })
+    },
+    logout() {
+      this.$store.dispatch('logout')
+    }
   },
 }
 </script>
