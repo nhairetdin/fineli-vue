@@ -62,33 +62,33 @@ export default createStore({
   },
   actions: {
     async fetchComponentData({ commit }) {
-      let data = await fetch('https://ravintoinfo.xyz/basedata/components/')
-      data = await data.json()
-      console.log(data.originalRows[1][0])
-      commit('SET_REFERENCE_VALUES', data.originalRows[1][0])
-      commit('SET_INITIAL_COMPONENT_DATA', data.classifiedRows)
+      // let data = await fetch('https://ravintoinfo.xyz/basedata/components/')
+      // data = await data.json()
+      const response = await req.fetchComponentData()
+      console.log(response.data.originalRows[1][0])
+      commit('SET_REFERENCE_VALUES', response.data.originalRows[1][0])
+      commit('SET_INITIAL_COMPONENT_DATA', response.data.classifiedRows)
     },
     async fetchFoodData({ commit }) {
-      let data = await fetch('https://ravintoinfo.xyz/basedata/food/')
-      data = await data.json()
-      console.log(data)
-      commit('SET_FOOD_DATA', data)
+      // let data = await fetch('https://ravintoinfo.xyz/basedata/food/')
+      // data = await data.json()
+      const response = await req.fetchFoodData()
+      console.log(response.data)
+      commit('SET_FOOD_DATA', response.data)
     },
     async login({ commit }, user) {
-      try {
-        const request = req.login(user)
-        const response = await fetch(request.url, { ...request.config })
-        const data = await response.json()
+      const response = await req.login(user)
 
-        if (!response.ok) {
-          console.log('Failed', data)
-        } else {
-          console.log('Logged in', data)
-          window.localStorage.setItem('user', JSON.stringify(data))
-          commit('TOGGLE_LOGIN')
-        }
-      } catch (err) {
-        console.log(err)
+      if (response.ok) {
+        window.localStorage.setItem('user', JSON.stringify(response.data))
+        commit('TOGGLE_LOGIN')
+
+        const userdata = await req.loadUserdata()
+        console.log(userdata)
+      }
+
+      if (!response.ok) {
+        console.log(response)
       }
     },
     logout({ commit }) {
